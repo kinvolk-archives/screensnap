@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<form method="post" action="/screenshots">
+  <div class="form-group">
+    <label for="url">URL</label>
+    <input type="text" class="form-control" id="url" name="url" aria-describedby="url-help" placeholder="https://kinvolk.io">
+    <small id="url-help" class="form-text text-muted">Submit an URL to screenshot, for example https://github.com/kinvolk</small>
+  </div>
+  <button type="submit" class="btn btn-primary">Create screenshot</button>
+</form>
+
+<script type="text/javascript">
+document.getElementById('url').focus();
+</script>
+{% endblock %}

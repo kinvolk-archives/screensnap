@@ -1,0 +1,6 @@
+boto3
+celery
+celery[redis]
+python-dotenv
+flask
+pyppeteer

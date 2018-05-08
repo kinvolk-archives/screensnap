@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<p id="message">Waiting for screenshot ...</p>
+<img id="screenshot" class="img-fluid">
+
+<script type="text/javascript">
+var params = new URLSearchParams(location.search);
+var screenshot_id = params.get('id');
+var screenshot_link = location.protocol + '//' + location.hostname + (location.port ? ':'+location.port: '') + '/screenshots/' + screenshot_id;
+
+function loadScreenshot(id, src) {
+	var img = new Image;
+
+	img.onerror = function() {
+		setTimeout(function() { img.src = src; }, 2000);
+	}
+	img.onload = function() {
+		document.getElementById('message').innerHTML = 'Permalink: <a href="' + screenshot_link + '">' + screenshot_link + '</a>';
+		document.getElementById(id).src = src;
+	}
+	img.src = src;
+}
+loadScreenshot('screenshot', screenshot_link);
+</script>
+
+{% endblock %}
